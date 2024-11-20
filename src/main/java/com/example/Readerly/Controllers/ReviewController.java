@@ -40,4 +40,24 @@ public class ReviewController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @DeleteMapping("/{reviewId}")
+    public ResponseEntity<?> deleteReview(@PathVariable String reviewId) {
+        try{
+          reviewService.deleteReview(reviewId);
+          return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/book/{bookId}")
+    public ResponseEntity<?> getReviewsByBook(@PathVariable String bookId) {
+        try{
+          return ResponseEntity.ok(reviewService.getReviewsByBook(bookId));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }
