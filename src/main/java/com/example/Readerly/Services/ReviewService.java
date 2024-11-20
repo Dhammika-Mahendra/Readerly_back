@@ -1,7 +1,10 @@
 package com.example.Readerly.Services;
 
+import com.example.Readerly.DTO.Convert.EditReviewDTOtoReview;
 import com.example.Readerly.DTO.Convert.ReviewDTOToReview;
+import com.example.Readerly.DTO.EditReviewRequest;
 import com.example.Readerly.DTO.ReviewRequest;
+import com.example.Readerly.Entities.Review;
 import com.example.Readerly.Repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,5 +20,12 @@ public class ReviewService {
     //Post a review
     public void postReview(ReviewRequest review) {
         reviewRepository.save(ReviewDTOToReview.toReview(review));
+    }
+
+    public void editReview(String reviewId, EditReviewRequest review) {
+        Review rw = reviewRepository.findById(reviewId)
+                .orElseThrow(() -> new RuntimeException("Unexpected error occurred"));
+        Review newRw = EditReviewDTOtoReview.toReview(review, rw);
+        reviewRepository.save(newRw);
     }
 }
