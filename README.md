@@ -63,7 +63,5 @@ All necessary configuration details, including connection credentials, are provi
 src\main\resources\application.properties
 ```
 
-Ensure the configuration matches your setup if you're using your own MongoDB cluster.
-
 ---
 
