@@ -14,10 +14,11 @@ public class JwtUtil {
     private String secretKey;
 
     // Generate a JWT token
-    public String generateToken(String userId) {
+    public String generateToken(String userId, String name) {
         try{
         return Jwts.builder()
                 .setSubject(userId)
+                .claim("name", name)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 15))  // 1 hour expiry
                 .signWith(SignatureAlgorithm.HS256, secretKey)

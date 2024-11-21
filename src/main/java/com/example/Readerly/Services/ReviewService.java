@@ -67,6 +67,7 @@ public class ReviewService {
                         dto.id=record.getId();
                         dto.bookId=record.getBookId();
                         dto.date=record.getDate();
+                        dto.review=record.getReview();
                         dto.rate=record.getRate();
                         dto.userId=record.getUserId();
                         dto.user=userNameMap.get(record.getUserId());

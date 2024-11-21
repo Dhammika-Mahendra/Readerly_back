@@ -6,5 +6,6 @@ public class ReviewResponse {
     public String userId;
     public String user;
     public String date;
+    public String review;
     public Short rate;
 }
