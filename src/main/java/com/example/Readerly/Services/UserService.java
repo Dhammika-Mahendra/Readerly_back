@@ -50,7 +50,7 @@ public class UserService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             if (passwordEncoder.matches(password, user.getPassword())) {
-                return jwtUtil.generateToken(user.getUserName());
+                return jwtUtil.generateToken(user.getId());
             }
         }
 
